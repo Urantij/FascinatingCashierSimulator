@@ -20,8 +20,18 @@ public class Game
             int toPay = GenerateToPay(config);
             int payed = GeneratePayed(toPay, config);
 
-            Console.WriteLine($"К вам пришёл покупатель с покупками на сумму {toPay}, и заплатил {payed}");
-            Console.WriteLine("Сколько сдачи вам нужно ему отдать?");
+            Console.WriteLine($"К тебе пришёл покупатель с покупками на сумму {toPay}, и заплатил {payed}");
+
+            int realToReturn = payed - toPay;
+
+            if (config.Hard)
+            {
+                Console.WriteLine("Сколько сдачи тебе нужно ему отдать?");
+            }
+            else
+            {
+                Console.WriteLine($"Тебе нужно вернуть ему {realToReturn}");
+            }
 
             int[] returnedBanknotes;
             readpart: ;
@@ -49,8 +59,6 @@ public class Game
             }
 
             int sum = returnedBanknotes.Sum();
-
-            int realToReturn = payed - toPay;
 
             if (sum != realToReturn)
             {
@@ -91,21 +99,21 @@ public class Game
         while (currentSum < toPay)
         {
             int banknote = config.BuyerBanknotes[currentIndex];
-            
+
             int sumWithBanknote = currentSum + banknote;
-            
+
             if (sumWithBanknote < toPay)
             {
                 currentSum = sumWithBanknote;
                 continue;
             }
-            
+
             // Если дальше идти некуда, просто докидываем и уходим
             if (currentIndex + 1 == config.BuyerBanknotes.Length)
             {
                 return sumWithBanknote;
             }
-            
+
             // Чем ближе остаток к номиналу банкноты, тем вероятнее эта банкота будет положена ещё раз
             // Если нужно заплатить 6000, сейчас банкнота 5000.
             // Закинул 5000, осталось ещё 1000

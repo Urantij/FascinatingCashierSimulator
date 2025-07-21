@@ -4,7 +4,7 @@ public class Manual
 {
     public static void Work(Config config)
     {
-        Console.WriteLine("Напиши, сколько денех к оплате, и сколько по итогу дали. (2100 2500)");
+        Console.WriteLine("Напиши, сколько денех к оплате, и сколько по итогу дали. Например 2100 2500");
 
         while (true)
         {
