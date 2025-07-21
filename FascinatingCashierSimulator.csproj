@@ -7,4 +7,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <JsonSerializerIsReflectionEnabledByDefault>false</JsonSerializerIsReflectionEnabledByDefault>
+        <PublishAot>true</PublishAot>
+        <OptimizationPreference>Size</OptimizationPreference>
+    </PropertyGroup>
 </Project>
