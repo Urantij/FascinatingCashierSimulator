@@ -81,8 +81,9 @@ public class Game
             {
                 state.Streak = 0;
                 Console.WriteLine($"Ты вернула {sum}, а надо было {state.GetToReturn()}....");
+                Console.WriteLine("ентер чтобы продолжить...");
                 Console.ReadLine();
-                return;
+                continue;
             }
 
             Console.WriteLine("Молодец!");
@@ -93,11 +94,11 @@ public class Game
             {
                 if (state.Streak % 10 == 0)
                 {
-                    Greater.Tell($"Ты решила {state.Streak} сдач!", TimeSpan.FromMilliseconds(50));
+                    Greater.Tell($"Ты решила {state.Streak} сдач подряд!", TimeSpan.FromMilliseconds(50));
                 }
                 else
                 {
-                    Console.WriteLine($"Ты решила {state.Streak} сдач!");
+                    Console.WriteLine($"Ты решила {state.Streak} сдач подряд!");
                 }
             }
 
