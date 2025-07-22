@@ -9,6 +9,8 @@ class GameState
     public int Streak { get; set; }
     public int Favors { get; set; }
 
+    public bool ToldAboutFavors { get; set; }
+
     public int GetToReturn() => Payed - ToPay;
 }
 
@@ -102,11 +104,16 @@ public class Game
                 }
             }
 
+            bool justToldAboutFavors = false;
             if (state.Solved % 3 == 0)
             {
                 state.Favors++;
-                if (state.Favors == 1)
+
+                if (!state.ToldAboutFavors)
                 {
+                    state.ToldAboutFavors = true;
+                    justToldAboutFavors = true;
+
                     Console.WriteLine();
                     Console.WriteLine("Теперь ты можешь попросить посмотреть ещё несколько рублей.");
                     Console.WriteLine("Для этого при покупателе введи '! сумма номиналов'");
@@ -114,7 +121,7 @@ public class Game
                 }
             }
 
-            if (state.Favors > 0)
+            if (!justToldAboutFavors && state.Favors > 0)
             {
                 Console.WriteLine($"Доступно просьб посмотреть: {state.Favors}");
             }
