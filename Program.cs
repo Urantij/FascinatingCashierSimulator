@@ -6,13 +6,15 @@ namespace FascinatingCashierSimulator;
 class Program
 {
     private const string ConfigPath = "./config.json";
-    
+
     static void Main(string[] args)
     {
+        WindowsCancer.SetIfNeeded();
+
         Greater.Tell("Привет, Ника!!!");
 
         Console.WriteLine("Что ты сегодня хочешь?");
-        
+
         Console.WriteLine("1 - Ручной режим кассира");
         Console.WriteLine("2 - Игровой режим кассира");
 
@@ -27,7 +29,7 @@ class Program
         {
             config = new Config();
         }
-        
+
         config.AvailableBanknotes = config.AvailableBanknotes.OrderDescending().ToArray();
 
         string? readLine = Console.ReadLine();
